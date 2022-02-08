@@ -6,15 +6,13 @@ import microphone
 def setup():
     size(model.x_dim, model.y_dim)
     colorMode(model.color_mode, height, width, height)
-    #microphone.initialize(this, AudioIn, Amplitude)
+    microphone.initialize(this, AudioIn, Amplitude)
 
 def draw():
     global startX, startY, radiusX, radiusY
-    #sound_level = microphone.get_level()
-    #agent_x = sound_level
-    #agent_y = 0.5
+    sound_level = microphone.get_level() * 2
     
-    model.agent_x = mouseX
+    model.agent_x = sound_level * width
     model.agent_y = mouseY
     
     radiusX = map(model.agent_x, 0, width, 100, 10)
@@ -23,4 +21,3 @@ def draw():
     fill(mouseX,mouseY,height)
     background(model.bg_color)
     ellipse(model.agent_x, model.agent_y, radiusX, radiusY)
-    #circle(model.agent_y, model.agent_x, model.flashlight_diameter)
